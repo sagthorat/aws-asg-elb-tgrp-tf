@@ -12,11 +12,6 @@ variable "tfc_aws_dynamic_credentials" {
   })
 }
 
-variable "latest_ami_id" {
-  description = "AMI for Instance (default is latest AmaLinux2)"
-  default     = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-}
-
 variable "web_asg_max" {
   description = "Specifies the maximum number of EC2 instances in the Web Autoscaling Group."
   default     = 10

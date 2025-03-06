@@ -2,7 +2,7 @@
 
 resource "aws_launch_template" "web_lt" {
   name_prefix   = "web-lt-"
-  image_id      = var.latest_ami_id
+  image_id      = data.aws_ami.this.id
   instance_type = "t2.micro"
 
   iam_instance_profile {
