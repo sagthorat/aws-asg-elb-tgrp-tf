@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "vpc1_igw" {
 resource "aws_subnet" "sn_public_a" {
   vpc_id                  = aws_vpc.vpc1.id
   cidr_block              = "10.16.1.0/24"
-  availability_zone       = "us-west-2a"
+  availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = true
   tags = {
     Name = "sn-public-a"
@@ -31,7 +31,7 @@ resource "aws_subnet" "sn_public_a" {
 resource "aws_subnet" "sn_public_b" {
   vpc_id                  = aws_vpc.vpc1.id
   cidr_block              = "10.16.2.0/24"
-  availability_zone       = "us-west-2b"
+  availability_zone       = data.aws_availability_zones.available.names[1]
   map_public_ip_on_launch = true
   tags = {
     Name = "sn-public-b"
@@ -41,7 +41,7 @@ resource "aws_subnet" "sn_public_b" {
 resource "aws_subnet" "sn_public_c" {
   vpc_id                  = aws_vpc.vpc1.id
   cidr_block              = "10.16.3.0/24"
-  availability_zone       = "us-west-2c"
+  availability_zone       = data.aws_availability_zones.available.names[2]
   map_public_ip_on_launch = true
   tags = {
     Name = "sn-public-c"
@@ -60,3 +60,4 @@ resource "aws_route" "default_route" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.vpc1_igw.id
 }
+
